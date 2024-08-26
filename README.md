@@ -35,10 +35,15 @@ pnpm build
 node dist/index.js
 ```
 
+## Use-cases
+- Interview chat bot
+- On boarding a user
+
 ## TODOs
 
 - implement a better way to run the app
 - provide sql file for the db
+- Add more use-cases
 
 ## Contributing
 
