@@ -6,7 +6,7 @@
 
 🤖 **Agentic Data Collection** is a LangChain.js and LangGraph.js based open-source project that runs an iterative process of collecting information from a user, through a chat interface.
 
-[![GitHub Repo stars](https://img.shields.io/github/stars/futino/aitino)](https://github.com/startino/collection-graph)
+[![GitHub Repo stars](https://img.shields.io/github/stars/startino/collection-graph)](https://github.com/startino/collection-graph)
 
 </div>
 
