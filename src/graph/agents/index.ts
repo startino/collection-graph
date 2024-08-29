@@ -48,14 +48,14 @@ type AgentNodeProps = {
 export async function runNode(props: AgentNodeProps) {
 	const { state, agent, name, config } = props;
 
-	const messages = state.messages;
-	const item_list = config.configurable.item_list;
-	const item_list_metadata = config.configurable.item_list_metadata;
-	const data = config.configurable.data;
+	// const messages = state.messages;
+	// const item_list = state.item_list;
+	// const item_list_metadata = state.item_list_metadata;
+	// const data = state.data;
 
 	// console.log('DATA', data);
 
-	let result = (await agent.invoke({messages, item_list, item_list_metadata, data}, config)) as AIMessage;
+	let result = (await agent.invoke(state, config)) as AIMessage;
 
 	result.name = name;
 

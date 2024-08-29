@@ -1,8 +1,9 @@
 import { AzureChatOpenAI } from '@langchain/openai';
 import { GraphState } from './state.js';
 import { END, START, StateGraph } from '@langchain/langgraph';
-import { ToolNode } from '@langchain/langgraph/prebuilt';
-import { updateItem } from './tools/index.js';
+// import { ToolNode } from '@langchain/langgraph/prebuilt';
+import { toolNode } from './tools/index.js';
+// import { updateItem } from './tools/index.js';
 import type { AIMessage } from '@langchain/core/messages';
 import { createCollector } from './agents/collector.js';
 import { createAttester } from './agents/attester.js';
@@ -13,8 +14,8 @@ export const collectionGraph = async (
 ) => {
 	const collector = await createCollector(llm, profile);
 	const attester = await createAttester(llm);
-	const tools = [updateItem];
-	const toolNode = new ToolNode<typeof GraphState.State>(tools);
+	// const tools = [updateItem];
+	// const toolNode = new ToolNode<typeof GraphState.State>(tools);
 
 	const graph = new StateGraph(GraphState)
 		.addNode('collector', collector.node)

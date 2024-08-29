@@ -39,12 +39,17 @@ const profile = {
     name: 'Chinmay'
 };
 
+const AZURE_OPENAI_API_KEY='ac8034f9b90c4df6b21f0e030ad42e7e';
+const AZURE_OPENAI_API_VERSION='2024-02-01';
+const AZURE_OPENAI_API_INSTANCE_NAME='startino';
+const AZURE_OPENAI_API_DEPLOYMENT_NAME='gpt-4o';
+
 const llm = new AzureChatOpenAI({
     model: 'gpt-4o',
-    azureOpenAIApiKey: process.env.AZURE_OPENAI_API_KEY,
-    azureOpenAIApiVersion: process.env.AZURE_OPENAI_API_VERSION,
-    azureOpenAIApiInstanceName: process.env.AZURE_OPENAI_API_INSTANCE_NAME,
-    azureOpenAIApiDeploymentName: process.env.AZURE_OPENAI_API_DEPLOYMENT_NAME,
+    azureOpenAIApiKey: AZURE_OPENAI_API_KEY,
+    azureOpenAIApiVersion: AZURE_OPENAI_API_VERSION,
+    azureOpenAIApiInstanceName: AZURE_OPENAI_API_INSTANCE_NAME,
+    azureOpenAIApiDeploymentName: AZURE_OPENAI_API_DEPLOYMENT_NAME,
     temperature: 0.5,
 });
 
@@ -79,11 +84,14 @@ const callGraph = async () => {
         
             const finalState = await app.invoke({
                 messages: [new HumanMessage(input)],
+                item_list,
+                item_list_metadata
             }, {
-                configurable: { thread_id: "42", item_list, item_list_metadata, data} 
+                configurable: { thread_id: "42"} 
             });
     
             console.log(finalState.messages[finalState.messages.length -1].content);
+            // console.log("DATA", finalState.final_data);
     
             askQuestion();
             
